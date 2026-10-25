@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ff4c8b">
+  <meta name="description" content="Outubro Rosa — informação, sinais de alerta e prevenção do câncer de mama.">
+  <title>Outubro Rosa | Todas juntas por essa causa</title>
+  <style>
+    :root {
+      --pink: #ff4c8b;
+      --pink-mid: #f875a2;
+      --pink-soft: #fac5d3;
+      --pink-ribbon: #f6a9bf;
+      --pink-dark: #d13b70;
+      --white: #fff;
+      --ink: #c63a70;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .poster {
+      width: 100%;
+      max-width: 1131px;
+      margin: 0 auto;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .desktop-artwork { display: block; width: 100%; height: auto; }
+    .responsive-recreation { display: none; }
+
+    /* Faixa superior */
+    .hero {
+      height: 39.06vw;
+      max-height: 442px;
+      min-height: 350px;
+      display: flex;
+      background: var(--pink);
+      color: var(--white);
+    }
+    .brand-area,
+    .hero-message {
+      width: 50%;
+      position: relative;
+      min-width: 0;
+    }
+    .brand-area { overflow: hidden; }
+    .ribbon-art {
+      position: absolute;
+      width: 65%;
+      height: 83%;
+      left: 15%;
+      top: 8%;
+      opacity: .95;
+    }
+    .brand-words {
+      position: absolute;
+      left: 46%;
+      top: 25%;
+      z-index: 1;
+      color: white;
+      font-weight: 900;
+      font-size: 78px;
+      font-size: clamp(54px, 6.25vw, 78px);
+      line-height: .79;
+      letter-spacing: -3px;
+    }
+    .brand-words span { display: block; }
+    .brand-rosa {
+      position: absolute;
+      z-index: 2;
+      left: 66%;
+      top: 69%;
+      transform: rotate(-9deg);
+      color: #fff0f5;
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: 52px;
+      font-size: clamp(34px, 4.1vw, 52px);
+      line-height: 1;
+      font-weight: 500;
+      font-style: italic;
+      text-shadow: 0 1px 0 rgba(255,255,255,.2);
+    }
+    .hero-message {
+      display: flex;
+      align-items: center;
+      padding: 4.5% 7.7%;
+    }
+    .hero-message:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 29%;
+      height: 58%;
+      width: 2px;
+      background: rgba(255,255,255,.92);
+    }
+    .hero-message p {
+      margin: 0;
+      max-width: 420px;
+      color: white;
+      font-weight: 800;
+      font-size: 49px;
+      font-size: clamp(33px, 4.25vw, 49px);
+      line-height: 1.02;
+      letter-spacing: -.7px;
+    }
+
+    /* Conteúdo informativo em duas colunas */
+    .content-grid {
+      display: flex;
+      min-height: 61.72vw;
+      background: var(--pink-soft);
+    }
+    .info-panel {
+      width: 50%;
+      padding: 3.8% 3.35% 3.3%;
+      background: var(--pink-soft);
+    }
+    .info-section { margin: 0 0 18px; }
+    .info-section:last-child { margin-bottom: 0; }
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 12px;
+      color: #ed5488;
+      font-weight: 800;
+      font-size: 42px;
+      font-size: clamp(29px, 3.65vw, 42px);
+      line-height: 1;
+      letter-spacing: -1.2px;
+    }
+    .section-number {
+      flex: 0 0 53px;
+      width: 53px;
+      height: 53px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: white;
+      background: #c72e68;
+      font-size: 39px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .info-section p,
+    .info-section ul {
+      margin: 0;
+      color: #c13c70;
+      font-size: 22px;
+      font-size: clamp(17px, 1.87vw, 22px);
+      line-height: 1.12;
+      letter-spacing: .05px;
+    }
+    .info-section ul { padding-left: 35px; }
+    .info-section li { padding-left: 1px; }
+
+    .right-panels {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .love-panel {
+      position: relative;
+      flex: 0 0 44.6%;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      padding: 4.5% 5.5%;
+      background: #fff;
+      overflow: hidden;
+    }
+    .love-panel p {
+      position: relative;
+      z-index: 1;
+      width: 85%;
+      margin: 0;
+      color: #ed5b91;
+      font-family: "Segoe Print", "Comic Sans MS", cursive;
+      font-size: 58px;
+      font-size: clamp(39px, 4.75vw, 58px);
+      line-height: 1.22;
+      font-weight: 400;
+      letter-spacing: -.8px;
+    }
+    .decor-heart {
+      position: absolute;
+      fill: #f9c5d5;
+      stroke: #f3a3bd;
+      stroke-width: 5;
+      opacity: .95;
+    }
+    .decor-heart.one { width: 22%; right: 10%; top: 5%; transform: rotate(-9deg); }
+    .decor-heart.two { width: 24%; right: -7%; top: 22%; transform: rotate(14deg); }
+
+    .fact-panel {
+      flex: 1 1 auto;
+      min-height: 350px;
+      background: var(--pink-mid);
+      padding: 4.2% 5% 4.5%;
+      color: white;
+    }
+    .fact-heading {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      min-height: 73px;
+      margin: 0 0 19px 16px;
+      padding: 0 22px 0 62px;
+      border-radius: 45px;
+      background: white;
+      color: #e84f86;
+      font-size: 41px;
+      font-size: clamp(29px, 3.4vw, 41px);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -.9px;
+      white-space: nowrap;
+    }
+    .question-mark {
+      position: absolute;
+      left: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: #f14f8b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 76px;
+      line-height: 1;
+      font-weight: 700;
+    }
+    .fact-panel p {
+      margin: 0 0 0 8px;
+      color: white;
+      font-size: 32px;
+      font-size: clamp(23px, 2.75vw, 32px);
+      line-height: 1.08;
+      letter-spacing: .1px;
+    }
+
+    /* Faixa decorativa de corações */
+    .heart-band {
+      height: 12.05vw;
+      max-height: 136px;
+      min-height: 108px;
+      padding: 4px 0;
+      background: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      border-top: 1px solid rgba(200, 51, 106, .1);
+      border-bottom: 1px solid rgba(200, 51, 106, .1);
+    }
+    .heart-row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 106%;
+      margin-left: -3%;
+      white-space: nowrap;
+      color: #c92f6b;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 43px;
+      font-size: clamp(28px, 3.8vw, 43px);
+      font-weight: 800;
+      line-height: .8;
+    }
+    .heart-row:nth-child(even) { transform: translateX(-16px); }
+    .heart-row span { display: inline-block; transform: rotate(-12deg) scaleX(.86); }
+    .heart-row span:nth-child(3n) { transform: rotate(13deg) scaleX(.9); }
+    .heart-row span:nth-child(4n) { transform: rotate(7deg) scale(.9); }
+
+    /* Rodapé */
+    .footer {
+      height: 28.5vw;
+      min-height: 250px;
+      max-height: 323px;
+      padding: 4.2% 8% 4.5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: white;
+      background: var(--pink);
+    }
+    .footer h2 {
+      max-width: 850px;
+      margin: 0 auto 29px;
+      color: white;
+      font-size: 36px;
+      font-size: clamp(26px, 3.2vw, 36px);
+      line-height: 1.18;
+      font-weight: 800;
+      letter-spacing: -.4px;
+    }
+    .footer p {
+      margin: 0;
+      color: white;
+      font-size: 28px;
+      font-size: clamp(21px, 2.5vw, 28px);
+      line-height: 1.2;
+    }
+
+    /* Tablets e celulares: conteúdo empilhado e texto legível */
+    @media (max-width: 860px) {
+      .desktop-artwork { display: none; }
+      .responsive-recreation { display: block; }
+      .hero {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        flex-direction: column;
+      }
+      .brand-area { width: 100%; height: 275px; }
+      .ribbon-art { width: 280px; height: 250px; left: calc(50% - 218px); top: 8px; }
+      .brand-words { left: calc(50% - 35px); top: 54px; font-size: 65px; }
+      .brand-rosa { left: calc(50% + 72px); top: 191px; font-size: 42px; }
+      .hero-message {
+        width: 100%;
+        padding: 25px 28px 31px;
+        justify-content: center;
+        text-align: center;
+      }
+      .hero-message:before {
+        top: 0;
+        left: 10%;
+        width: 80%;
+        height: 2px;
+      }
+      .hero-message p { font-size: 38px; max-width: 430px; }
+      .content-grid { height: auto; min-height: 0; max-height: none; flex-direction: column; }
+      .info-panel { width: 100%; padding: 30px 28px 25px; }
+      .section-heading { font-size: 34px; gap: 10px; letter-spacing: -.7px; }
+      .section-number { flex-basis: 47px; width: 47px; height: 47px; font-size: 34px; }
+      .info-section { margin-bottom: 24px; }
+      .info-section p, .info-section ul { font-size: 19px; line-height: 1.2; }
+      .right-panels { width: 100%; }
+      .love-panel { min-height: 235px; flex-basis: auto; padding: 34px 28px; }
+      .love-panel p { width: 82%; font-size: 43px; }
+      .fact-panel { min-height: 0; padding: 32px 30px 36px; }
+      .fact-heading { min-height: 65px; font-size: 32px; margin: 0 0 20px 15px; padding-left: 56px; }
+      .question-mark { width: 75px; height: 75px; font-size: 66px; }
+      .fact-panel p { font-size: 26px; max-width: 500px; margin-left: 2px; }
+      .heart-band { height: 96px; min-height: 96px; max-height: none; }
+      .heart-row { font-size: 33px; }
+      .footer { min-height: 240px; max-height: none; padding: 42px 24px 38px; }
+      .footer h2 { font-size: 29px; margin-bottom: 22px; }
+      .footer p { font-size: 23px; }
+    }
+    @media (max-width: 480px) {
+      .brand-area { height: 235px; }
+      .ribbon-art { width: 238px; height: 220px; left: calc(50% - 188px); top: 7px; }
+      .brand-words { left: calc(50% - 22px); top: 53px; font-size: 52px; letter-spacing: -2px; }
+      .brand-rosa { left: calc(50% + 64px); top: 162px; font-size: 36px; }
+      .hero-message { padding: 25px 20px 28px; }
+      .hero-message p { font-size: 32px; }
+      .info-panel { padding: 26px 20px 22px; }
+      .section-heading { gap: 8px; font-size: 27px; letter-spacing: -.5px; }
+      .section-number { flex-basis: 41px; width: 41px; height: 41px; font-size: 29px; }
+      .info-section p, .info-section ul { font-size: 17px; line-height: 1.22; }
+      .info-section ul { padding-left: 25px; }
+      .love-panel { min-height: 205px; padding: 27px 20px; }
+      .love-panel p { width: 84%; font-size: 36px; }
+      .fact-panel { padding: 29px 21px 31px; }
+      .fact-heading { min-height: 58px; font-size: 26px; padding-left: 48px; padding-right: 15px; margin-left: 12px; }
+      .question-mark { width: 66px; height: 66px; left: -12px; font-size: 57px; }
+      .fact-panel p { font-size: 22px; line-height: 1.13; }
+      .heart-band { height: 82px; min-height: 82px; }
+      .heart-row { font-size: 29px; }
+      .footer { min-height: 220px; padding: 37px 18px 32px; }
+      .footer h2 { font-size: 24px; margin-bottom: 22px; }
+      .footer p { font-size: 20px; }
+    }
+
+    @media print {
+      body { background: white; }
+      .poster { max-width: none; width: 100%; }
+      .hero, .content-grid, .heart-band, .footer { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="poster" aria-label="Campanha Outubro Rosa: informação e prevenção do câncer de mama">
+    <img class="desktop-artwork" src="assets/outubro-rosa-original.png" alt="Cartaz Outubro Rosa. Informação sobre câncer de mama, sinais de alerta, prevenção, mensagem de autocuidado e conscientização sobre o diagnóstico precoce.">
+    <div class="responsive-recreation">
+    <header class="hero">
+      <div class="brand-area" aria-label="Outubro Rosa">
+        <svg class="ribbon-art" viewBox="0 0 360 330" role="img" aria-label="Laço rosa">
+          <path d="M115 31 C77 26 52 51 56 82 C60 114 91 149 119 184 C146 220 173 263 211 286 C236 301 258 296 284 273 L328 234 L291 233 L267 253 C251 267 239 270 225 259 C193 235 170 194 143 158 C118 125 92 97 89 76 C87 59 99 49 120 51 Z" fill="#f7b2c7"/>
+          <path d="M110 31 C137 23 169 28 183 51 C199 77 184 107 165 135 C143 168 117 204 87 244 L54 210 C75 177 105 136 123 105 C134 85 138 69 127 56 C119 47 106 46 92 51 Z" fill="#f9c3d3"/>
+          <path d="M56 210 L87 244 L83 264 L51 228 Z" fill="#ed92b0"/>
+          <path d="M291 233 L328 234 L306 256 L268 257 Z" fill="#ed92b0"/>
+          <path d="M92 51 C109 43 125 47 134 57 C143 68 138 84 128 103 L113 131 L90 97 C77 77 78 61 92 51 Z" fill="#f49eb8"/>
+          <path d="M118 183 C139 151 162 119 177 93 C186 77 184 64 174 50" fill="none" stroke="#ee9cb7" stroke-width="2" opacity=".6"/>
+        </svg>
+        <div class="brand-words" aria-hidden="true"><span>OU</span><span>TU</span><span>BRO</span></div>
+        <div class="brand-rosa" aria-hidden="true">rosa</div>
+      </div>
+      <div class="hero-message">
+        <p>Todas<br>juntas por<br>essa causa!</p>
+      </div>
+    </header>
+
+    <section class="content-grid" aria-label="Informações sobre o câncer de mama">
+      <div class="info-panel">
+        <section class="info-section">
+          <h2 class="section-heading"><span class="section-number">1</span><span>Informação</span></h2>
+          <p>O câncer de mama é o tipo predominante entre as mulheres. Embora seja mais comum com o avanço da idade, também pode ocorrer em mulheres mais jovens.</p>
+        </section>
+        <section class="info-section">
+          <h2 class="section-heading"><span class="section-number">2</span><span>Sinais de Alerta</span></h2>
+          <ul>
+            <li>Caroço na mama ou na axila;</li>
+            <li>Alterações na pele, como retração ou aspecto de casca de laranja;</li>
+            <li>Saída espontânea de secreção pelo mamilo, especialmente com sangue;</li>
+          </ul>
+        </section>
+        <section class="info-section">
+          <h2 class="section-heading"><span class="section-number">3</span><span>Prevenção</span></h2>
+          <p>Observe e perceba mudanças no seu corpo. A mamografia é o principal exame de rastreamento (dos 50 aos 74 anos deve ser feita a cada 2 anos e dos 40 aos 49 anos sob demanda médica).</p>
+        </section>
+      </div>
+
+      <div class="right-panels">
+        <section class="love-panel" aria-label="Mensagem de conscientização">
+          <p>Cuidar de si é<br>um ato de<br>amor!</p>
+          <svg class="decor-heart one" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 88 C38 75 11 52 11 31 C11 12 34 6 50 27 C66 6 89 12 89 31 C89 52 62 75 50 88Z"/></svg>
+          <svg class="decor-heart two" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 88 C38 75 11 52 11 31 C11 12 34 6 50 27 C66 6 89 12 89 31 C89 52 62 75 50 88Z"/></svg>
+        </section>
+        <section class="fact-panel">
+          <h2 class="fact-heading"><span class="question-mark" aria-hidden="true">?</span><span>Você sabia?</span></h2>
+          <p>Com o tratamento correto e nos primeiros estágios, as chances de cura podem chegar a 95%.</p>
+        </section>
+      </div>
+    </section>
+
+    <div class="heart-band" aria-hidden="true">
+      <div class="heart-row"><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span></div>
+      <div class="heart-row"><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span></div>
+      <div class="heart-row"><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span></div>
+      <div class="heart-row"><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span></div>
+    </div>
+
+    <footer class="footer">
+      <h2>O DIAGNÓSTICO PRECOCE PODE SALVAR<br class="desktop-break"> SUA VIDA!</h2>
+      <p>Medicina - UNINOVE</p>
+    </footer>
+    </div>
+  </main>
+</body>
+</html>
