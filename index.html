@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Outubro Rosa UNINOVE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&family=Poiret+One&family=Great+Vibes&display=swap">
+<style>
+/* Layout: réplica do cartaz A4 — faixa de topo, grade 2 colunas, faixa de corações, rodapé com QR */
+:root {
+  color-scheme: light;
+  --pink: #ff538d;
+  --pink-mid: #ff80a8;
+  --pink-soft: #fdc5d5;
+  --pink-text: #e2457f;
+  --pink-deep: #c9356c;
+  --heart: #d0336b;
+  --white: #ffffff;
+  --page: #f7e3ea;
+  --display: "Poppins", "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --hand: "Poiret One", "Century Gothic", "Trebuchet MS", sans-serif;
+  --script: "Great Vibes", "Brush Script MT", cursive;
+}
+body { margin: 0; background: var(--page); font-family: var(--display); color: var(--pink-text); }
+*, *::before, *::after { box-sizing: border-box; }
+
+.poster {
+  max-width: 1131px;
+  margin: 0 auto;
+  background: var(--pink);
+  overflow: hidden;
+  container-type: inline-size;
+}
+
+/* ---------- Topo ---------- */
+.top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0;
+  padding-block: 7.5cqw 3cqw;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.logo { justify-self: end; display: block; width: 35.4cqw; max-width: 100%; height: auto; margin-right: 4.5cqw; }
+.divider { width: 2px; height: 22.5cqw; background: rgba(255,255,255,.9); }
+.slogan {
+  margin: 0 0 0 9cqw;
+  font-weight: 800; color: var(--white);
+  font-size: 4.6cqw; line-height: 1.05; letter-spacing: .005em;
+}
+
+/* ---------- Grade ---------- */
+.grid { display: grid; grid-template-columns: 50% 50%; }
+.left { background: var(--pink-soft); padding: 4.5cqw 2.6cqw 3.8cqw 3.8cqw; display: flex; flex-direction: column; gap: 1.5cqw; }
+.item h2 {
+  display: flex; align-items: center; gap: 1.6cqw;
+  margin: 0; font-weight: 800; color: var(--pink-text);
+  font-size: 3.6cqw; line-height: 1.2; text-wrap: balance;
+}
+.num {
+  flex: none; display: grid; place-items: center;
+  width: 4.6cqw; height: 4.6cqw; border-radius: 50%;
+  background: var(--pink-deep); color: var(--white);
+  font-size: 3.2cqw; font-weight: 800; line-height: 1;
+}
+.item p, .item ul {
+  margin: 1.6cqw 0 0; font-size: 2.05cqw; line-height: 1.22; font-weight: 400;
+}
+.item p { text-align: justify; }
+.item ul { padding-left: 3.6cqw; }
+.item:nth-child(2) ul { margin-top: 3.4cqw; }
+.item:nth-child(3) { margin-top: 1.2cqw; }
+
+.right { display: grid; grid-template-rows: 27.2cqw 1fr; }
+.love { position: relative; background: var(--white); padding: 3.6cqw 15cqw 0 3cqw; overflow: hidden; }
+.love p {
+  margin: 0; font-family: var(--hand); color: #f0609a;
+  font-size: 6.2cqw; line-height: 1.12; white-space: nowrap; font-weight: 400; letter-spacing: -.01em;
+  position: relative; z-index: 1;
+}
+.love .hearts-img { position: absolute; right: 0; top: 0.8cqw; width: 14.6cqw; height: auto; z-index: 0; pointer-events: none; }
+
+.know { background: var(--pink-mid); padding: 4cqw 3cqw 3cqw 4.2cqw; color: var(--white); }
+.pill {
+  display: inline-flex; align-items: center; position: relative;
+  background: var(--white); border-radius: 999px;
+  height: 7cqw; padding: 0 2cqw 0 8.6cqw; margin-left: 0;
+}
+.qmark {
+  position: absolute; left: -.6cqw; top: 50%; transform: translateY(-50%);
+  width: 8cqw; height: 8cqw; border-radius: 50%; background: #f2468b;
+  display: grid; place-items: center;
+  color: var(--white); font-weight: 900; font-size: 7.4cqw; line-height: 1;
+}
+
+.pill .label { font-weight: 800; color: #f2468b; font-size: 3.8cqw; letter-spacing: -.01em; }
+.know p { margin: 2.6cqw 0 0 1cqw; font-size: 3.05cqw; line-height: 1.15; font-weight: 500; letter-spacing: .02em; max-width: 38cqw; }
+
+/* ---------- Corações ---------- */
+.hearts { display: block; width: 100%; height: auto; }
+
+/* ---------- Rodapé ---------- */
+.foot {
+  position: relative;
+  text-align: center; color: var(--white);
+  padding-block: 4.6cqw 5.6cqw;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.foot h3 { margin: 0; font-weight: 700; font-size: 3.35cqw; line-height: 1.22; letter-spacing: .005em; }
+.foot .org { margin: 3.4cqw 0 0; font-size: 2.6cqw; font-weight: 500; letter-spacing: .02em; }
+
+.qr {
+  position: absolute; right: 3cqw; bottom: 3cqw;
+  display: flex; flex-direction: column; align-items: center; gap: .8cqw;
+  text-decoration: none; color: var(--white);
+}
+.qr img {
+  width: 11.5cqw; height: 11.5cqw; display: block;
+  background: var(--white); padding: .8cqw; border-radius: 1cqw;
+  image-rendering: pixelated;
+}
+.qr small { font-size: 1.35cqw; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; line-height: 1.2; }
+
+/* ---------- Celular ---------- */
+@media (max-width: 640px) {
+  .top { grid-template-columns: 1fr; justify-items: center; padding-block: 36px 28px; gap: 20px; }
+  .logo { justify-self: center; width: min(300px, 82vw); margin: 0; }
+  .divider { width: 60%; height: 2px; }
+  .slogan { margin: 0; font-size: 34px; text-align: center; }
+  .grid { grid-template-columns: 1fr; }
+  .left { padding: 28px max(20px, env(safe-area-inset-right, 0px)) 28px max(20px, env(safe-area-inset-left, 0px)); gap: 18px; }
+  .item h2 { font-size: 26px; gap: 12px; }
+  .num { width: 34px; height: 34px; font-size: 22px; }
+  .item p, .item ul { font-size: 16px; margin-top: 10px; }
+  .item ul { padding-left: 22px; }
+  .item:nth-child(2) ul { margin-top: 10px; }
+  .right { grid-template-rows: auto auto; }
+  .love { padding: 28px 100px 28px 24px; }
+  .love p { white-space: nowrap; }
+  .love p { font-size: 44px; }
+  .love .hearts-img { width: 84px; top: 6px; }
+  .know { padding: 30px 24px 34px; }
+  .pill { height: 52px; padding: 0 18px 0 66px; }
+  .qmark { width: 60px; height: 60px; font-size: 54px; }
+  .pill .label { font-size: 26px; }
+  .know p { font-size: 20px; max-width: none; margin-top: 18px; }
+  .foot { padding-block: 32px 30px; }
+  .foot h3 { font-size: 21px; }
+  .foot .org { font-size: 17px; margin-top: 16px; }
+  .qr { position: static; margin: 24px auto 0; gap: 8px; }
+  .qr img { width: 140px; height: 140px; padding: 8px; border-radius: 8px; }
+  .qr small { font-size: 12px; }
+}
+@media (max-width: 380px) { .slogan { font-size: 30px; } .love p { font-size: 40px; } }
+a.qr:focus-visible { outline: 3px solid var(--white); outline-offset: 4px; border-radius: 8px; }
+</style>
+
+</head>
+<body>
+<main class="poster">
+  <header class="top">
+    <img class="logo" src="img/logo.png" alt="Outubro Rosa">
+    <div class="divider" aria-hidden="true"></div>
+    <h1 class="slogan">Todas<br>juntas por<br>essa causa!</h1>
+  </header>
+
+  <section class="grid">
+    <div class="left">
+      <article class="item">
+        <h2><span class="num">1</span>Informação</h2>
+        <p>O câncer de mama é o tipo predominante entre as mulheres. Embora seja mais comum com o avanço da idade, também pode ocorrer em mulheres mais jovens.</p>
+      </article>
+      <article class="item">
+        <h2><span class="num">2</span>Sinais de Alerta</h2>
+        <ul>
+          <li>Caroço na mama ou na axila;</li>
+          <li>Alterações na pele, como retração ou aspecto de casca de laranja;</li>
+          <li>Saída espontânea de secreção pelo mamilo, especialmente com sangue;</li>
+        </ul>
+      </article>
+      <article class="item">
+        <h2><span class="num">3</span>Prevenção</h2>
+        <p>Observe e perceba mudanças no seu corpo. A mamografia é o principal exame de rastreamento (dos 50 aos 74 anos deve ser feita a cada 2 anos e dos 40 aos 49 anos sob demanda médica).</p>
+      </article>
+    </div>
+
+    <div class="right">
+      <div class="love">
+        <p>Cuidar de si é<br>um ato de<br>amor!</p>
+        <img class="hearts-img" src="img/coracao.png" alt="">
+      </div>
+      <div class="know">
+        <div class="pill"><span class="qmark" aria-hidden="true">?</span><span class='label'>Você sabia?</span></div>
+        <p>Com o tratamento correto e nos primeiros estágios, as chances de cura podem chegar a 95%.</p>
+      </div>
+    </div>
+  </section>
+
+  <img class="hearts" src="img/coracoes.jpg" alt="">
+
+  <footer class="foot">
+    <h3>O DIAGNÓSTICO PRECOCE PODE SALVAR<br>SUA VIDA!</h3>
+    <p class="org">Medicina - UNINOVE</p>
+    <div class="qr">
+      <img src="img/qrcode.png" alt="QR code do vídeo explicativo">
+      <small>Assista ao vídeo</small>
+    </div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  function fit(){
+    var box=document.querySelector('.love'), p=box&&box.querySelector('p'); if(!p) return;
+    p.style.fontSize='';
+    var cs=getComputedStyle(box), avail=box.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+    var w=p.scrollWidth, fs=parseFloat(getComputedStyle(p).fontSize);
+    if(w>avail) p.style.fontSize=(fs*avail/w*0.98)+'px';
+  }
+  fit(); window.addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>
