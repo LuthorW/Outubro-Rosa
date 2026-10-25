@@ -4,11 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Outubro Rosa UNINOVE</title>
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#ff538d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&family=Poiret+One&family=Great+Vibes&display=swap">
 <style>
-/* Layout: réplica do cartaz A4 — faixa de topo, grade 2 colunas, faixa de corações, rodapé com QR */
+/* Layout: celular/tablet = réplica do cartaz; computador (>= 1025px) = layout de site — faixa de topo, grade 2 colunas, faixa de corações, rodapé com QR */
 :root {
   color-scheme: light;
   --pink: #ff538d;
@@ -25,6 +30,8 @@
 }
 body { margin: 0; background: var(--page); font-family: var(--display); color: var(--pink-text); }
 *, *::before, *::after { box-sizing: border-box; }
+main, header, section, article, footer { display: block; }
+.hearts-band { display: none; }
 
 .poster {
   max-width: 1131px;
@@ -44,7 +51,8 @@ body { margin: 0; background: var(--page); font-family: var(--display); color: v
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-.logo { justify-self: end; display: block; width: 35.4cqw; max-width: 100%; height: auto; margin-right: 4.5cqw; }
+.logo-wrap { position: relative; justify-self: end; width: 35.4cqw; max-width: 100%; margin-right: 4.5cqw; }
+.logo { position: relative; z-index: 2; display: block; width: 100%; height: auto; }
 .divider { width: 2px; height: 22.5cqw; background: rgba(255,255,255,.9); }
 .slogan {
   margin: 0 0 0 9cqw;
@@ -128,7 +136,7 @@ body { margin: 0; background: var(--page); font-family: var(--display); color: v
 /* ---------- Celular ---------- */
 @media (max-width: 640px) {
   .top { grid-template-columns: 1fr; justify-items: center; padding-block: 36px 28px; gap: 20px; }
-  .logo { justify-self: center; width: min(300px, 82vw); margin: 0; }
+  .logo-wrap { justify-self: center; width: min(300px, 82vw); margin: 0; }
   .divider { width: 60%; height: 2px; }
   .slogan { margin: 0; font-size: 34px; text-align: center; }
   .grid { grid-template-columns: 1fr; }
@@ -156,6 +164,158 @@ body { margin: 0; background: var(--page); font-family: var(--display); color: v
   .qr small { font-size: 12px; }
 }
 @media (max-width: 380px) { .slogan { font-size: 30px; } .love p { font-size: 40px; } }
+/* ---------- Computadores e notebooks (layout de site, compatível com navegadores antigos) ---------- */
+/* Usa só px, flexbox com prefixos e cores fixas: funciona mesmo sem suporte a cqw, grid ou variáveis CSS. */
+@media screen and (min-width: 1025px) {
+  body { background: #ff538d; color: #e2457f; font-family: "Poppins", "Helvetica Neue", Arial, sans-serif; }
+  .poster { max-width: none; width: 100%; background: #ff538d; }
+
+  .top {
+    display: -webkit-box; display: -ms-flexbox; display: flex;
+    -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+    -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;
+    padding: 34px 40px 30px;
+  }
+  .logo-wrap { width: 270px; max-width: 30%; margin: 0 48px 0 0; -ms-flex-negative: 0; flex-shrink: 0; }
+  .divider { width: 2px; height: 170px; background: #ffffff; margin: 0; -ms-flex-negative: 0; flex-shrink: 0; }
+  .slogan { margin: 0 0 0 52px; font-size: 44px; line-height: 1.08; color: #ffffff; }
+
+  .grid { display: block; }
+  .left {
+    display: -webkit-box; display: -ms-flexbox; display: flex;
+    -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;
+    -webkit-box-orient: horizontal; -ms-flex-direction: row; flex-direction: row;
+    background: #fdc5d5; padding: 80px 40px;
+  }
+  .item { -webkit-box-flex: 1; -ms-flex: 1 1 0px; flex: 1 1 0; max-width: 380px; margin: 0 24px; }
+  .item:nth-child(3) { margin-top: 0; }
+  .item h2 {
+    display: -webkit-box; display: -ms-flexbox; display: flex;
+    -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+    font-size: 30px; line-height: 1.2; color: #e2457f; gap: 0;
+  }
+  .num {
+    display: inline-block; width: 44px; height: 44px; line-height: 44px; text-align: center;
+    margin-right: 14px; font-size: 24px; background: #c9356c; color: #ffffff;
+    -ms-flex-negative: 0; flex-shrink: 0;
+  }
+  .item p, .item ul { margin: 18px 0 0; font-size: 17px; line-height: 1.6; color: #e2457f; }
+  .item p { text-align: left; }
+  .item ul { padding-left: 22px; }
+  .item:nth-child(2) ul { margin-top: 18px; }
+  .item li { margin-bottom: 6px; }
+
+  .right { display: -webkit-box; display: -ms-flexbox; display: flex; }
+  .love, .know { width: 50%; -webkit-box-flex: 1; -ms-flex: 1 1 50%; flex: 1 1 50%; }
+  .love { background: #ffffff; padding: 80px 200px 80px 40px; text-align: right; }
+  .love p { display: inline-block; text-align: left; font-size: 64px; color: #f0609a; font-family: "Poiret One", "Century Gothic", "Trebuchet MS", sans-serif; }
+  .love .hearts-img { width: 170px; top: 50%; right: 0; margin-top: -115px; }
+
+  .know { background: #ff80a8; color: #ffffff; padding: 80px 40px 80px 72px; }
+  .pill {
+    display: -webkit-inline-box; display: -ms-inline-flexbox; display: inline-flex;
+    height: 68px; padding: 0 28px 0 88px; background: #ffffff;
+  }
+  .qmark {
+    display: block; width: 78px; height: 78px; line-height: 80px; text-align: center;
+    left: -6px; margin-top: -39px; top: 50%;
+    -webkit-transform: none; -ms-transform: none; transform: none;
+    font-size: 64px; background: #f2468b; color: #ffffff;
+  }
+  .pill .label { font-size: 36px; color: #f2468b; }
+  .know p { margin: 28px 0 0 8px; font-size: 28px; line-height: 1.3; max-width: 520px; color: #ffffff; }
+
+  .hearts { display: none; }
+  .hearts-band {
+    display: block; height: 140px;
+    background: #ffffff url("img/coracoes.jpg") repeat-x left center;
+    background-size: auto 100%;
+  }
+
+  .foot {
+    display: -webkit-box; display: -ms-flexbox; display: flex;
+    -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+    -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;
+    padding: 56px 40px; color: #ffffff;
+  }
+  .foot-text { text-align: left; }
+  .foot h3 { font-size: 34px; line-height: 1.25; color: #ffffff; }
+  .foot .org { margin: 18px 0 0; font-size: 22px; color: #ffffff; }
+  .qr { position: static; display: block; text-align: center; margin: 0 0 0 80px; color: #ffffff; }
+  .qr img { width: 150px; height: 150px; padding: 10px; border-radius: 10px; background: #ffffff; margin: 0 auto 10px; }
+  .qr small { display: block; font-size: 13px; max-width: 170px; margin: 0 auto; }
+}
+/* ---------- Animações (inspiradas no OLYMPUS / LuthorCorp) ---------- */
+.top { position: relative; overflow: hidden; }
+.top > * { position: relative; z-index: 1; }
+.top > .ambient { position: absolute; z-index: 0; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+
+/* Anéis orbitais girando atrás do laço */
+.ring {
+  position: absolute; z-index: 1; left: 50%; top: 50%;
+  width: 92%; height: 0; padding-top: 92%; margin: -46% 0 0 -46%;
+  border: 1px solid rgba(255,255,255,.32); border-radius: 50%;
+  -webkit-animation: rotateRing 20s linear infinite; animation: rotateRing 20s linear infinite;
+}
+.ring-two {
+  width: 64%; padding-top: 64%; margin: -32% 0 0 -32%;
+  border-style: dashed; border-color: rgba(255,255,255,.4);
+  -webkit-animation-duration: 13s; animation-duration: 13s;
+  -webkit-animation-direction: reverse; animation-direction: reverse;
+}
+.ring::after {
+  content: ""; position: absolute; left: 50%; top: -5px; width: 9px; height: 9px; margin-left: -4px;
+  border-radius: 50%; background: #ffffff; box-shadow: 0 0 14px rgba(255,255,255,.9);
+}
+@-webkit-keyframes rotateRing { from { -webkit-transform: rotate(0deg); } to { -webkit-transform: rotate(360deg); } }
+@keyframes rotateRing { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* Entrada suave das seções (só quando o navegador suporta) */
+.anim .reveal {
+  opacity: 0; -webkit-transform: translateY(18px); -ms-transform: translateY(18px); transform: translateY(18px);
+  -webkit-transition: opacity .6s ease, -webkit-transform .6s ease; transition: opacity .6s ease, transform .6s ease;
+}
+.anim .reveal.in { opacity: 1; -webkit-transform: none; -ms-transform: none; transform: none; }
+.anim .slogan { -webkit-transition-delay: .15s; transition-delay: .15s; }
+.anim .item:nth-child(2) { -webkit-transition-delay: .12s; transition-delay: .12s; }
+.anim .item:nth-child(3) { -webkit-transition-delay: .24s; transition-delay: .24s; }
+.anim .know, .anim .qr { -webkit-transition-delay: .15s; transition-delay: .15s; }
+
+/* Corações flutuando e "?" pulsando */
+.love .hearts-img { -webkit-animation: floatHeart 4.5s ease-in-out infinite; animation: floatHeart 4.5s ease-in-out infinite; }
+@-webkit-keyframes floatHeart { 0%, 100% { -webkit-transform: translateY(0); } 50% { -webkit-transform: translateY(-8px); } }
+@keyframes floatHeart { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.qmark { -webkit-animation: pulseGlow 2.6s ease-in-out infinite; animation: pulseGlow 2.6s ease-in-out infinite; }
+@-webkit-keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(242,70,139,.45); } 50% { box-shadow: 0 0 0 10px rgba(242,70,139,0); } }
+@keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(242,70,139,.45); } 50% { box-shadow: 0 0 0 10px rgba(242,70,139,0); } }
+
+@media screen and (min-width: 1025px) {
+  /* Cartões sobem ao passar o mouse */
+  .anim .item.in, .item {
+    border-radius: 18px; padding: 22px; margin: 0 12px;
+    -webkit-transition: opacity .6s ease, -webkit-transform .2s ease, background .2s ease, box-shadow .2s ease;
+    transition: opacity .6s ease, transform .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .anim .item.in { -webkit-transition-delay: 0s; transition-delay: 0s; }
+  .item:hover, .anim .item.in:hover {
+    -webkit-transform: translateY(-4px); -ms-transform: translateY(-4px); transform: translateY(-4px);
+    background: rgba(255,255,255,.45); box-shadow: 0 14px 30px rgba(201,53,108,.14);
+  }
+  .num { -webkit-transition: -webkit-transform .2s ease; transition: transform .2s ease; }
+  .item:hover .num { -webkit-transform: scale(1.12); -ms-transform: scale(1.12); transform: scale(1.12); }
+  .qr img { -webkit-transition: -webkit-transform .2s ease, box-shadow .2s ease; transition: transform .2s ease, box-shadow .2s ease; }
+  .qr:hover img { -webkit-transform: translateY(-4px); -ms-transform: translateY(-4px); transform: translateY(-4px); box-shadow: 0 14px 30px rgba(120,0,50,.25); }
+
+  /* Faixa de corações deslizando */
+  .hearts-band { -webkit-animation: heartsSlide 70s linear infinite; animation: heartsSlide 70s linear infinite; }
+}
+@-webkit-keyframes heartsSlide { from { background-position: 0 center; } to { background-position: -1173px center; } }
+@keyframes heartsSlide { from { background-position: 0 center; } to { background-position: -1173px center; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ring, .love .hearts-img, .qmark, .hearts-band { -webkit-animation: none !important; animation: none !important; }
+  .anim .reveal { opacity: 1 !important; -webkit-transform: none !important; transform: none !important; -webkit-transition: none !important; transition: none !important; }
+}
 a.qr:focus-visible { outline: 3px solid var(--white); outline-offset: 4px; border-radius: 8px; }
 </style>
 
@@ -163,18 +323,23 @@ a.qr:focus-visible { outline: 3px solid var(--white); outline-offset: 4px; borde
 <body>
 <main class="poster">
   <header class="top">
-    <img class="logo" src="img/logo.png" alt="Outubro Rosa">
+    <canvas class="ambient" aria-hidden="true"></canvas>
+    <div class="logo-wrap reveal">
+      <span class="ring ring-one" aria-hidden="true"></span>
+      <span class="ring ring-two" aria-hidden="true"></span>
+      <img class="logo" src="img/logo.png" alt="Outubro Rosa">
+    </div>
     <div class="divider" aria-hidden="true"></div>
-    <h1 class="slogan">Todas<br>juntas por<br>essa causa!</h1>
+    <h1 class="slogan reveal">Todas<br>juntas por<br>essa causa!</h1>
   </header>
 
   <section class="grid">
     <div class="left">
-      <article class="item">
+      <article class="item reveal">
         <h2><span class="num">1</span>Informação</h2>
         <p>O câncer de mama é o tipo predominante entre as mulheres. Embora seja mais comum com o avanço da idade, também pode ocorrer em mulheres mais jovens.</p>
       </article>
-      <article class="item">
+      <article class="item reveal">
         <h2><span class="num">2</span>Sinais de Alerta</h2>
         <ul>
           <li>Caroço na mama ou na axila;</li>
@@ -182,18 +347,18 @@ a.qr:focus-visible { outline: 3px solid var(--white); outline-offset: 4px; borde
           <li>Saída espontânea de secreção pelo mamilo, especialmente com sangue;</li>
         </ul>
       </article>
-      <article class="item">
+      <article class="item reveal">
         <h2><span class="num">3</span>Prevenção</h2>
         <p>Observe e perceba mudanças no seu corpo. A mamografia é o principal exame de rastreamento (dos 50 aos 74 anos deve ser feita a cada 2 anos e dos 40 aos 49 anos sob demanda médica).</p>
       </article>
     </div>
 
     <div class="right">
-      <div class="love">
+      <div class="love reveal">
         <p>Cuidar de si é<br>um ato de<br>amor!</p>
         <img class="hearts-img" src="img/coracao.png" alt="">
       </div>
-      <div class="know">
+      <div class="know reveal">
         <div class="pill"><span class="qmark" aria-hidden="true">?</span><span class='label'>Você sabia?</span></div>
         <p>Com o tratamento correto e nos primeiros estágios, as chances de cura podem chegar a 95%.</p>
       </div>
@@ -201,11 +366,14 @@ a.qr:focus-visible { outline: 3px solid var(--white); outline-offset: 4px; borde
   </section>
 
   <img class="hearts" src="img/coracoes.jpg" alt="">
+  <div class="hearts-band" aria-hidden="true"></div>
 
   <footer class="foot">
-    <h3>O DIAGNÓSTICO PRECOCE PODE SALVAR<br>SUA VIDA!</h3>
-    <p class="org">Medicina - UNINOVE</p>
-    <div class="qr">
+    <div class="foot-text reveal">
+      <h3>O DIAGNÓSTICO PRECOCE PODE SALVAR<br>SUA VIDA!</h3>
+      <p class="org">Medicina - UNINOVE</p>
+    </div>
+    <div class="qr reveal">
       <img src="img/qrcode.png" alt="QR code do vídeo explicativo">
       <small>Aponte a câmera e saiba mais!</small>
     </div>
@@ -223,6 +391,75 @@ a.qr:focus-visible { outline: 3px solid var(--white); outline-offset: 4px; borde
   }
   fit(); window.addEventListener('resize',fit);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+<script>
+/* Partículas no cabeçalho e entrada das seções — ES5 para navegadores antigos */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Entrada das seções
+  var items = document.querySelectorAll ? document.querySelectorAll('.reveal') : [];
+  if (!reduce && 'IntersectionObserver' in window && items.length) {
+    document.documentElement.className += ' anim';
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          entries[i].target.className += ' in';
+          io.unobserve(entries[i].target);
+        }
+      }
+    }, { threshold: 0.12 });
+    for (var k = 0; k < items.length; k++) io.observe(items[k]);
+  }
+
+  // Partículas conectadas (como o fundo do OLYMPUS), em tons de branco/rosa
+  var canvas = document.querySelector('.ambient');
+  if (!canvas || !canvas.getContext || reduce) return;
+  var ctx = canvas.getContext('2d');
+  var raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+            function (cb) { return window.setTimeout(function () { cb(new Date().getTime()); }, 40); };
+  var parts = [], w = 0, h = 0, last = 0;
+
+  function resize() {
+    var box = canvas.parentNode, ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+    w = box.offsetWidth; h = box.offsetHeight;
+    canvas.width = w * ratio; canvas.height = h * ratio;
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    parts = [];
+    var count = Math.max(18, Math.min(46, Math.round(w * h / 9000)));
+    for (var i = 0; i < count; i++) {
+      parts.push({ x: Math.random() * w, y: Math.random() * h,
+                   vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25,
+                   r: Math.random() * 1.6 + .6 });
+    }
+  }
+
+  function draw(t) {
+    raf(draw);
+    if (document.hidden || t - last < 38) return;
+    last = t;
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+      if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.fill();
+      for (var j = i + 1; j < parts.length; j++) {
+        var o = parts[j], dx = p.x - o.x, dy = p.y - o.y, d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 120) {
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(o.x, o.y);
+          ctx.strokeStyle = 'rgba(255,255,255,' + (.22 * (1 - d / 120)) + ')'; ctx.stroke();
+        }
+      }
+    }
+  }
+
+  resize();
+  if (window.addEventListener) window.addEventListener('resize', resize);
+  raf(draw);
 })();
 </script>
 </body>
